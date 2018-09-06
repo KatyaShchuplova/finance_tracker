@@ -18,9 +18,10 @@
 
 </head>
 <body>
-	<form action="UsdRateControllerServlet" method="POST" class="form-group">
+	<form action="UsdRateController" method="POST" class="form-group">
 	
 		<input type="hidden" name="command" value="ADD" />
+		<br/><br/>
 		<h3>Choose the date <small class="text-muted">for which you want to download the rate</small></h3>
 		<br/><br/>
 		<input type="text" class="form-control" id="date" name="date" placeholder="Choose date" required />
@@ -47,7 +48,7 @@
 		</tr>
 		<c:forEach var="tempRate" items="${RATE_LIST }">
 		<!-- set up a link for delete a student -->
-		<c:url var="deleteLink" value="UsdRateControllerServlet">
+		<c:url var="deleteLink" value="UsdRateController">
 			<c:param name="command" value="DELETE" />
 			<c:param name="date" value="${tempRate.date }" />
 		</c:url>
@@ -60,6 +61,10 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<p>
+		<a href="TransactionController">Back to Financial operations</a>
+	</p>
 
 
 

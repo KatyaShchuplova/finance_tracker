@@ -1,4 +1,4 @@
-package com.shchuplov.ek.web.jdbc;
+package com.shchuplov.ek.web;
 
 import java.util.Date;
 

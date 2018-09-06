@@ -1,4 +1,4 @@
-package com.shchuplov.ek.web.jdbc;
+package com.shchuplov.ek.web;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

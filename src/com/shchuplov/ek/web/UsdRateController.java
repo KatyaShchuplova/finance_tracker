@@ -1,4 +1,4 @@
-package com.shchuplov.ek.web.jdbc;
+package com.shchuplov.ek.web;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import org.json.JSONObject;
 
-import com.shchuplov.ek.web.jdbc.RateDbUtil;
+
+import com.shchuplov.ek.web.RateDbUtil;
 
 /**
- * Servlet implementation class UsdRateControllerServlet
+ * Servlet implementation class UsdRateController
  */
-@WebServlet("/UsdRateControllerServlet")
-public class UsdRateControllerServlet extends HttpServlet {
+@WebServlet("/UsdRateController")
+public class UsdRateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private RateDbUtil rateDbUtil;
@@ -80,11 +80,10 @@ public class UsdRateControllerServlet extends HttpServlet {
 		
 		String date = request.getParameter("date");
 		if (rateDbUtil.canAddDate(date)) {
-			JSONObject rate = nbrbApiUtil.getRate(date);
-			String rateOnDay = rate.getString("Cur_OfficialRate");
+			String rateOnDay = nbrbApiUtil.getRate(date);;
 			rateDbUtil.add(date, rateOnDay);	
 		}
-		response.sendRedirect(request.getContextPath() + "/UsdRateControllerServlet?command=LIST");		
+		response.sendRedirect(request.getContextPath() + "/UsdRateController?command=LIST");		
 
 		
 	}

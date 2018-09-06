@@ -1,4 +1,4 @@
-package com.shchuplov.ek.web.jdbc;
+package com.shchuplov.ek.web;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -19,7 +19,7 @@ public class NbrbApiUtil {
 		
 	}
 	   
-    public JSONObject getRate(String date) {
+    public String getRate(String date) throws Exception {
     	   	
         try {
         	connection = getConnection(URL+date);
@@ -32,10 +32,10 @@ public class NbrbApiUtil {
         } finally {
             if (connection != null) {
                 connection.disconnect();
-                return rateJson;
+                return rateJson.getString("Cur_OfficialRate");
             }
         }
-		return rateJson;
+		return rateJson.getString("Cur_OfficialRate");
     }
     
 
